@@ -8,12 +8,15 @@
 \usepackage{graphicx}
 \usepackage{lmodern}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr} %not sure whether natbib needs this but I added it to be on the safe side
+\usepackage{natbib}
 
 \title{Survey Sampling Methods}
 \author{Moritz Baten, Burak Demiral,  Sergej Kaiser}
 % \institute{KU Leuven} % This line gave error.
 
 \begin{document}
+	\bibliographystyle{plainnat}
 	\maketitle
 	
 	\section{Critical reading}
@@ -27,4 +30,9 @@
 
 	\section{Methodology}
 		\include{sections/section4}
+		
+		\newpage
+\renewcommand{\refname}{\section*{Bibliography}}
+\bibliography{ente}
+
 \end{document}
