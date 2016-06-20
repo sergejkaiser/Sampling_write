@@ -1,4 +1,5 @@
 # for q2.
+library(survey)
 HIS <- read.csv('../data/bmi_voeg.csv')
 HIS$region <- factor(HIS$region, levels=1:3, labels=c("Flanders", "Brussels", "Wallonia"))
 HIS$province <- factor(HIS$province, levels=1:12, labels=c("Antwerpen", "Vlaams-Brabant", "Limburg",
@@ -6,3 +7,18 @@ HIS$province <- factor(HIS$province, levels=1:12, labels=c("Antwerpen", "Vlaams-
 														   "Hainaut", "Liège", "Luxembourg",
 														   "Namur", "Brussels", "Eupen"))
 HIS$sex <- factor(HIS$sex, levels=1:2, labels=c('Male', 'Female'))
+HIS$age7 <- ordered(HIS$age7, levels=1:7, labels=c("15-29", "25-34", "35-44", "45-54", 
+												   "55-64", "65-74", "75+"))
+HIS$edu3 <- ordered(HIS$edu3, levels=1:3, labels=c("<=Primary", "Secondary", "Higher"))
+
+
+# Remove people without provinces.
+nHIS <- na.omit(HIS)
+
+
+
+
+survey.design <- svydesign(id=~id+hh,
+						   strata=~province,
+						   data=nHIS,
+						   weights=~wfin)
