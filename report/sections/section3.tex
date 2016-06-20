@@ -1,3 +1,4 @@
+\subsection*{3.A Description of the Belgian Health Survey}
 The sample for the Health Interview Survey (HIS) 2013 consists of 10.000 units each of which selected from the National Registry throughout the year. Belgium consists of 3 regions and in order to be able to talk about these regions, the sample is stratified into 3; 3.500 of which from Flanders, 3.500 Wallonia and 3.000 Brussels.\footnote{On top of this there is also 600 additional sampling units for the province of Luxembourg as they payed extra money for this in order to acquire the desired bound of error for their province.} The regions are further stratified into provinces but this time proportional to their size so that a province won't be over or underrepresented.\footnote{The province Liège was further stratified into two in order to study the German Community.} This stratification ensures a geographical spread and if the provinces are homogenous within themselves it should result in higher precision compared to simple random sampling. In the end this results in total 12 strata.
 
 This 2-step stratification is followed by a multi-stage sampling with three levels in total. First the municipalities within provinces, then households within municipalities and lastly individiuals within households. 
@@ -16,3 +17,47 @@ As before a step size is calculated by dividing the total number of households (
 This sampling taken from an ordered list ensures that municipalities are well represented with respect to statistical sectors, household sizes and ages of the reference person. 
 
 Within a household maximum number of people to interview was capped at 4 in order to avoid familial correlation. This is avoided, because individuals in the same household tend to be similar compared to the individuals in other households, so interviewing one more individual within a household doesn't give much information about the sample in general. Then if a household contains more than 4 individuals there has to be a selection rule to pick 4 members out of the total household. Ideally this selection procedure should be done in total randomness in order to avoid bias, but there are some practical problems with this as it may be difficult to explain the reference person that they will not be interviewed and also the information for the general household questionnaire should come from the reference person, thus for the households with more than 4 members, reference (and the partner if there is one) is always interviewed and the following 3 (or 2 if there is a partner) members are selected by the birthday rule, which is whoever has the closest upcoming birthday to the day of interview is selected and since not everyone has the same selection probability in households with more than 4 member, weights are attached in proportion to inverse of the selection probability in order to mitigate the bias.
+
+\subsection*{3.D Comparison of European Social Survey with General Social Survey (US) }
+
+Since the ESS survey is a rather young survey, it seems fitting to compare it to an incumbent with a lot of experience, the GSS from the United States.
+
+The GSS uses a multi-stage area probabiltity sampling.
+The Primary Sampling Units are the Standard Metropolitan Statistical Areas (SMSAs) or counties in rural areas. Both are stratified by region, age and race before selection. 
+The Secondary Sampling Units (SSU) are block groups (BG) or enumeration districts (ED). The latter describe an area which one interviewer can cover. These BGs and EDs are also stratified to race and income before selection. The Tertiary Sampling Units  (TSU) are blocks who are selected proportional to size. In places without block statistics field counting is used. 
+
+In addition quotas on sex, age and employment status are used to account for the not-at-homes: District figures from census data are used to keep the sex proportional. Similarly proper portion of employed and unemployed women and proper portion of men over and under 35 were enfored. The argumentation here is that especially young women and men under 35 are difficult to sample otherwise. 
+
+%GSS non response sampling
+Furthermore non-respondent cases are sub-sampled at the end of sampling (about ten weeks before the first release) period to spent more ressources on these difficult cases. This sub-sample is then weighted and added to the final sample.
+\begin{table}[H]
+\centering
+\adjustbox{max height=\dimexpr\textheight-5cm,
+            max width=\textwidth, center}{
+\begin{tabular}{lll}
+	\toprule 
+	& GSS & ESS \\
+\midrule 
+PSU & counties or metropolitan areas & census sections \\
+stratification & yes: region, race and age & yes: region and town size \\
+SSU & block groups or districs & list of individuals$^\dagger$ \\ 
+stratification & yes: race and income & no \\
+TSU & blocks & --\\
+stratification & no & no \\
+[0.5]
+Quota Sampling &  yes on sex, age and employment & no, forbidden \\ 
+oversampling & yes & not recommended, requires authorisation \\
+non-respondent actions & oversampling, non-resp. sub-sample & urge to use more contact attempts \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize $\dagger$ applies to ESS countries who have a registry, for others fieldwork agencies and random route techniques are used}
+\end{tabular}}
+	\caption{Comparison of ESS and GSS}
+	\label{ESScomp}
+\end{table}
+
+The ESS uses a two stage sampling procedure. The PSU are selected usually sections of the last census. The PSUs are stratified by region and town-size before selection. Afterwards they are ordered per target population and from this lists then the individuals are sampled (by SRS). There is no stratification on this level. 
+
+This procedure is applied if registries are available. In countries where no reliable lists of addresses or households is available like Portugal or Bulgaria PSUs are used but then use fieldwork agencies or random route techniques. Fieldwork agencies create lists of people within an area, while random route techniques use algorithms to randomly select sampling units. However it is not clear how random these random route techniques are. Thus they should be avoided if possible (Lyberg, 2000).
+
+For smaller countries the ESS uses a minimum size of 800 for countries with a population of less than two million. In addition ESS urge the national coordinators to not over-sample anticipated low response rates.
+%Lyberg, L. (2000): Review of IALS - a commentary on the technical report. In: Measuring Adult Literacy. The International Adult Literacy Survey in the European Context, London: Office for National Statistics.
