@@ -12,11 +12,8 @@ HIS$age7 <- ordered(HIS$age7, levels=1:7, labels=c("15-29", "25-34", "35-44", "4
 HIS$edu3 <- ordered(HIS$edu3, levels=1:3, labels=c("<=Primary", "Secondary", "Higher"))
 
 
-# Remove people without provinces.
+# Delete all the rows with NA.
 nHIS <- na.omit(HIS)
-
-
-
 
 survey.design <- svydesign(id=~id+hh,
 						   strata=~province,
