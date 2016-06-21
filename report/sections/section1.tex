@@ -1,16 +1,24 @@
-In the following we are going to first summarize "The problem of nonrespone in sample survey" by \cite{Hurwitz}in combination with "Multiphase Sampling in Nonresponse Problems" by \cite{Srinath}. 
-Hurwitz and Hansen describe sampling procedures to obtain a cost optimal allocation of survey mail and follow up face to face interviews. Substaintially the authors argue that combining both one may obtain the advantages from both methods, thus low cost of mail with higher repsonse and infromation conerning the representativity of the sample to the population. 
-- first point sample size is only one factor of sampling error
-- shows based on a variance formula that same reliability may arrise from various sample sizes
-- shows optimal number of mails and in person interviews for a desired average error can be calculated if an approximate response rate is available.
-- if the response rate is unkown the authors showed that the optimal number of mails and in person interviews can be obtained for a given range of reponse rates.
--  further highlighted two alternatives plans to achieve minimum cost for a desired avg. level of precision (for a response rate of 100\% assuming similarity between respondents and non respondents ).
-- Alternative 1 initially send out 1000 mails and follow up on a fraction of the non respondents depending on the square root of the expected unit cost divided by the unit cost of sending a questoinare plus the expected unit cost of processing returned questionnaires.
-  Result: Higher cost than optimal combination, for response rate >30, cost increase from 10 to 24 percent
-- Alternative 2 preferable if approximate reponse is unkown, specify maximum number of responss sent out. Second step after sample return and response rate is known, set in person interviews such that desired level of precision is achieved
-- Striking result for alternative 2 even though response rate not known, for a given level of precision may be reached for low level of cost (not much higher than optimal level of cost). 
-- Critique: Cost depend on approx. rate of response. This may be a problem in practice that either the targeted avg. sampling error is missed or cost budget is out of control. 
-- Further mailing may increase a missing
-- Further short comming is that the authors only focus on non response. The reliability of an sample depends as well on the quality of the respondents answers. 
-K.P. Srinath extends the sampling plan of Hansen and Hurwitz. The authors contribution is that he proposes to use subsampling fractions, which vary in response to sample non response. The authors variance of the estimator which do not depend on the unkown sampling variance and the subsampling fractions are adjusted to ensure a fixed precision.  
-
+In the following we are going first to summarise "The problem of nonresponse in sample survey" by Hurwitz and Hansen (2004) in combination with "Multiphase Sampling in Nonresponse Problems" by Srinath (1971). \par
+The first paper discusses how to choose the optimal subsample after an initial non-response of contacted persons in a sample survey. The first contact attempt is done with via mail, and the random subsample may be tried to reach via mail. 
+ Substantially the authors argue that one may achieve a cost reduction using the mail and combining it with the follow-up personal interview to ensure a high response rate and the representativity of the sample to the population. \par 
+First, the authors derived under the assumption that an approximate response rate is known simple expressions for the optimal number of mails and follow-up interviews, which minimising the cost at a desired average sampling error. Their optimal number of mails depends on factors as the population size, the population variance and the response rate. The subsample of interviews is than proportional to the inverse of the constant, which contains the ratio of cost and response rates. \par
+Further,  if the response rate is unknown, the authors highlighted two alternatives plans to achieve minimum cost for the desired average level of precision under the assumption of a response rate of 100\% . The first plan of the authors is to initially send out 1000 mails and follow up on all the non-responses regardless of the non-response rate. They find that
+the result is higher cost than optimal combination for response rate of high than 30 percent the cost increase is in the range of 10 to 24 percent. \par
+A second plan the authors suggest to improve cost efficiency is to specify a maximum number of responses sent out regardless of the non-response. In a second step after the sample returned and response rate are known,  the number of follow-up interviews is determined such that desired level of precision is achieved. 
+The authors find that the second plan without using information about response rate for a given level of precision may be reached at a slightly higher level of cost compared to the optimal values given the response rate.  \par
+The second paper of K.P. Srinath suggests an interesting extension to the sampling plan of Hansen and Hurwitz. The authors contribution is that he proposes to use subsampling fractions, which vary in response to sample non-response. The authors derive expressions for the variance of the estimator which do not depend on the unknown sampling variance, and the subsampling fractions are adjusted to ensure a fixed precision.  
+\par
+We agree with the authors that combining data collection methods with an initially more inexpensive with more expensive increase the response yields a cost saving and response increasing method.  Further, we agree with the authors example that an increase of sample size is not a sole solution to reliability, as other design factors may be more important for the reliability.  \par 
+Further, we agree with the extension of Srinath to adjust the follow up to non-response rates, as we think that using this information one can obtain a smaller sample for a given precision.  \par
+We disagree with Hurwitz and Hansen as we do not think that the first plan is a good plan for two reasons. It is not cost efficient and second taking a sample of the non-respondents may yield the same precision and may reduce cost. 
+A critique, which we share with the literature,  is that the cost savings of the method are not high if the expected cost of an interview is not much higher than the expected cost of mail survey  (\cite{durbin1953}). 
+Further, we think that the second plans described in Hurwitz and Hansen are too conservative in assuming that no response rate is available. We think that it may be more cost efficient to determine an initial sample size under a conservative estimate of the upper range of non-response. 
+Also, the authors of the first paper assume that the response is one hundred percent after the interview. We think that this assumption is to our opinion questionable. 
+The desired sampling error thus may not be achieved, and a larger sample and subsample may be necessary.\par
+Moreover, we think that a cost saving alternative to both plans of Hurwitz and Hansen is to use several attempts of mail survey with a final interview follow up. This has been an also suggest in the literature by  \cite{el1956} and is also discussed in \cite{Srinath}. 
+\par
+Another shortcoming is that both papers only focus on non-response. 
+However, we think that the reliability of a sample depends as well on the quality of the respondents answers. 
+We think that including the quality dimension to the model could yield important changes to the optimal allocation of data collection methods. 
+  \par Further we think that the sampling plans in both papers could be improved regarding field efficiency by using prior information to satisfy the sample. A higher field efficiency may then allow to sample more units and therefore improved precision for a given level of cost. 
+\endinput
