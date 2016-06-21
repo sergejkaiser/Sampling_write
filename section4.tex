@@ -1,0 +1,65 @@
+\subsection{What are missing data in surveys?}
+
+Survey data may contain different kinds of nonresponse. Unit nonresponse describes the situation if there is no data of the target unit (mostly a person) and item nonresponse describes that a sampling unit did not respond to a particular survey item. \par
+
+\cite{schafer2002missing} describes that traditionally for the first kind of nonresponse survey statisticians used reweighting, whereas for the latter they used single imputation.
+Further, the authors note that these methods may provide in special cases similar performance as modern methods like maximum likelihood based methods or multiple imputation methods, which are more general. \par
+
+In the following we will first outline a missing data classification based on \cite{rubin1976}. 
+Next, based on the classification we explain why we need missing data techniques. 
+The discussion of missing data techniques follows then. In particular, we will discuss traditional methods and compare them to more advanced methods. 
+Finally, we discuss modern missing data methods. \par
+
+\subsection{Which kinds of missing data exist?} 
+Since \cite{rubin1976} missing data is analysed with probability models. 
+To illustrate, we will discuss the case of an arbitrary pattern of nonresponse.
+In a survey with several questions, we will record for each question the nonresponse with a binary variable, which is equal to zero, if the survey participant answered a particular question and is one if he did not answer. 
+For an arbitrary nonresponse pattern in the survey dataset, where each of the questions' response is recorded in a separate column and each of the survey participants' responses are in a row, we obtain a set of binary indicators. \par 
+The innovation of \cite{rubin1976} is to study the missingness mechanism \cite{Little}. The missingness mechanism describes the relationship between the missingness and the variables in the data set of variables. \cite{rubin1976} showed how to study the mechanism under the assumption that the set of indicators has a joint probability distribution. \par
+Based on the missing data mechanism we can classify nonresponse into three categories missing completely at random (MCAR), missing at random (MAR), not missing at random (MNAR). Missingness completely at random describes that the probability that value is missing is independent of the recorded data and the missing data mechanism. 
+Missing at random describes that the probability of a missing value does only depend on our observed data but not on the missing values. 
+Last the assumption not missing at random describes that missingness depends on observed and unobserved parts of the data. \par
+
+\subsection{Why are missing data techniques necessary?}
+
+The concerns about nonresponse are (1) efficiency losses (2) complications in data handling and data analysis (3) bias due to differences between data values for those between respondents and non-respondents  (cf. \cite{Schafer99}). \par 
+Point (1) and (3)  can be ignored if the missing data is MCAR. 
+Therefore, the missingness in our survey would be independent of all other collected survey variables. MCAR is in practice unlikely to hold. \par 
+Usually, the missingness is related to other variables in the data set and hence either MAR or MNAR. 
+If we assume that the missingness in our survey is  MAR, we assume that we can correct for the missingness in our data set with the rest of our data. Most of the modern missing data are based on this assumption. \par
+Further, if the missingness is MNAR the missingness mechanism has to be taken into account in the analysis. An example would be if respondents would self-select into the survey based on unobserved characteristics.
+
+\subsection{Traditional Missing Data techniques} 
+
+\begin{itemize}
+\item Listwise Complete Observations
+This method keeps only the responses from the survey participants who completely answered the questions which are analysed. E.g. if we build a regression model for sentiment towards immigrants this method keeps only the observations, which have completed all questions included as independent or dependent variables.
+In general, this method may be used if the missingness is MCAR. \par However in the case of multivariate analysis for a large number of variables, even small fractions of missing values for each variable can lead to a large reduction of the sample size with this method. Therefore, the authors note that even under MCAR listwise complete observations may be not efficient. \par Under certain patterns of MAR, the method yields valid and efficient estimates of the regression coefficients. This does not extend to correlation. In general, if the fraction of missing values is not too large, this method will not lead to much bias \cite{schafer2002missing}.  
+\item Pairwise Complete Observations
+
+This method keeps different sets of sample units for different parameters. To highlight this, we look at the same example as before. Further, we refine the example by specifying that regression model studies the relation between $Y_{1,i}$ and $X_{1,i}$ and $X_{2,i}$ for all sampling units $i$, which were obtained by simple random sampling. Under pairwise complete observations the parameter $\beta_1$, which describes the relation between  $Y_{1,i}$ and $X_{1,i}$, would be obtained using all available observations. The same holds for the parameter $\beta_2$. For each pair $Y_{1,i}, X_{1,i}$ and $Y_{1,i}, X_{2,i}$ the pairwise complete observations would be used, therefore the sets of observations would be different for each parameter. According to Schafer and Graham (2002), the computation of the standard errors thus becomes difficult. Further,  they showed a problem of this method with the example of a correlation. Eg. to calculate the correlation between $Y_{1,i} , X_{1,i}$, one may use all the available values of $X_{1,i}$ to calculate the standard deviation of $X_{1,i}$ and all available pairs of $Y_{1,i} , X_{1,i}$ to obtain the covariance. However, a correlation obtained like this may be not bound in the interval $[-1,1]$. Therefore, the authors conclude that using as much data as possible is a good practice; the discussed method is flawed.
+ \item Weighting
+The method is used in combination with listwise complete observations. \cite{schafer2002missing} note that under specific conditions weighting can reduce the bias of the method in the case of MAR and NMAR. Initially like in the listwise complete observation method the sample is reduced to the set of complete observations for a particular analysis. In the next step, the sample is adjusted to resemble more closely the population or the full sample with regards to covariates. \par 
+The weights are based on estimates of the probability to respond, which may be obtained from the data. The weighting eliminates the bias due to non-response for the included variables in the probability model. However, the bias for any variables not included in the model will not be reduced.
+\end{itemize}
+ \begin{itemize} 
+\item Single imputation
+\begin{itemize}
+\item Mean substitution
+Imputing a missing value due to item non-response with the mean value of the corresponding question yields unbiased estimates. However, we do not account for the uncertainty introduced by the missing value. The method downward biases the sample variance and overstates the number of observations. Further \cite{schafer2002missing} report that this method biases the covariance between variables and the interclasscorrelation. 
+\item  Regression imputation
+This statistical technique imputes the missing values with the predicted values from a regression. The method produces unbiased estimates of the mean under MCAR and MAR, however, the imputed data will show less variation than the complete data \cite{baraldi2010introduction}. The problem can be mitigated by adding a random component to each predicted score, which is drawn from a normal distribution with mean zero and a variance equal to the residual variance. This method yields unbiased estimates (both under MCAR and MAR). However, the standard errors do not account for the uncertainty introduced by the imputation. The result is that the standard error is downward biased and the statistical test will have a higher type 1 error.
+\end{itemize}  
+\end{itemize}  
+\subsection{Modern Techniques} 
+ In the following we describe \textbf{multiple imputation} based on the outline in \cite{Schafer99}. \par  
+Multiple imputations is a simulation-based technique. Each missing value is imputed with $m$  simulated values, where $m$ is usually a small number between 3 and 10. The method leads to valid imputation under a frequentist perspective under the assumption of MAR and an additional technical assumption about the parameters of the missingness mechanism and the analysis model. \par 
+In practice \cite{Little} recommend to implement MI with Bayesian techniques. Therefore, the simulated values are draws from the posterior predictive distribution, which is obtained by Bayesian estimation.  \par
+With this technique, a specific missing data model can be specified, which can be different from the analysis model. The choice of the imputation model is not completely free and must be done with attention to the analysis model.  A guide is that the posterior distribution of the imputation model must reflect uncertainty about the analysis model. \par The flexibility of this approach is due to the separation of the imputation and the analysis step. In general, as \cite{Schafer99} notes that the imputation needs to be reasonable and reflect uncertainty. As the analysis and imputation are separated it may be the case that the assumptions of the imputation model and the analysis model are incompatible. \cite{Schafer99} notes that if the imputation model makes fewer assumptions than the analysis model than the MI estimate is valid however a loss of power may occur. Further, in case the imputation model makes more assumptions and these assumptions are valid, the MI estimate may be more efficient than the complete data analysis. Finally, he notes that in case the imputation model's extra assumption are not valid, MI may not yet yield valid results.  \par 
+After the imputation, the data is used to analyse each of the $m$ imputed data sets using complete data techniques. Finally, the $m$ results can be combined using Rubin's Rules \cite{rubin1987multiple}.  Rubin showed that an estimate can be pooled using an average of the $m$ results. Further, the estimated total variance is a combination of the average within imputation variance and the between imputation variance, which correctly accounts for the imputation uncertainty. Statistical tests about the estimate may be conducted using a student t-distribution with a specific degrees of freedom (cf. \cite{Schafer99}).   \par 
+In the following we describe the use of \textbf{maximum likelihood methods for estimation with missing data} based on \cite{Enders06}. 
+Under the MAR assumption, maximum likelihood methods may be used to obtain valid estimates. \par
+The estimation of missing data maximum likelihood requires the maximisation of the log-likelihood function, which is the log of the likelihood function. The likelihood function describes how likely a particular parameter estimate is given the data. The ML estimation yields the most likely parameter estimate minimising the squared distance between the parameter and the data. \par With missing data present the maximum likelihood estimation changes only a little. The estimation uses for each $i$ all available data to obtain the most likely estimate and standard error given the data. Unlike other discussed methods, this method does not impute missing data. 
+
+\subsection{Recommendations}
+Based on the goal to conduct a valid statistical interference with missing data, we recommend using the modern missing data techniques ML or MI. Both methods are suitable to obtain estimates and correct standard errors which account for the uncertainty induced by the missing values.
